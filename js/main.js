@@ -1,98 +1,64 @@
-var scripts = document.getElementsByTagName('script');
-var myScript = scripts[scripts.length - 1];
+/* =========================================================================
+   Yuxin Cao — Academic Homepage (redesign)
+   Vanilla JS: mobile nav, scroll-spy, news toggle, publication filters.
+   ========================================================================= */
+(function () {
+  "use strict";
 
-var queryString = myScript.src.replace(/^[^\?]+\??/, '');
+  /* ---------- Mobile nav toggle ---------- */
+  var toggle = document.querySelector(".nav-toggle");
+  var links = document.querySelector(".nav-links");
+  if (toggle && links) {
+    toggle.addEventListener("click", function () {
+      links.classList.toggle("open");
+    });
+    links.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") links.classList.remove("open");
+    });
+  }
 
-var params = parseQuery(queryString);
+  /* ---------- Scroll-spy: highlight active nav link ---------- */
+  var navAnchors = Array.prototype.slice.call(
+    document.querySelectorAll('.nav-links a[href^="#"]')
+  );
+  var sections = navAnchors
+    .map(function (a) { return document.querySelector(a.getAttribute("href")); })
+    .filter(Boolean);
 
-var recruit = 0;
-
-function parseQuery(query) {
-    var Params = {};
-    if (!query) return Params; // return empty object
-    var Pairs = query.split(/[;&]/);
-    for (var i = 0; i < Pairs.length; i++) {
-        var KeyVal = Pairs[i].split('=');
-        if (!KeyVal || KeyVal.length != 2) continue;
-        var key = unescape(KeyVal[0]);
-        var val = unescape(KeyVal[1]);
-        val = val.replace(/\+/g, ' ');
-        Params[key] = val;
+  function onScroll() {
+    var pos = window.scrollY + 120;
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= pos) current = sections[i];
     }
-    return Params;
-}
-
-function showPubs(id) {
-  if (id == 0) {
-    document.getElementById('pubs').innerHTML = document.getElementById('pubs_by_date').innerHTML;
-    document.getElementById('select0').style = 'text-decoration:underline;color:#000000';
-    document.getElementById('select1').style = '';
-  } else {
-    document.getElementById('pubs').innerHTML = document.getElementById('pubs_by_topic').innerHTML;
-    document.getElementById('select1').style = 'text-decoration:underline;color:#000000';
-    document.getElementById('select0').style = '';
-  } 
-}
-
-function showRecruit() {
-  if (recruit == 0) {
-    document.getElementById('recruit').style='display:inline-block';
-  } else {
-    document.getElementById('recruit').style='display:none';
+    navAnchors.forEach(function (a) {
+      a.classList.toggle("active", a.getAttribute("href") === "#" + (current && current.id));
+    });
   }
-  recruit = 1 - recruit;
-}
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-function toggleTextNews(){
-  let showMoreNews = document.getElementById("moreNews");
-  let showMoreNewsButton = document.getElementById("moreNewsButton");
-
-  if (moreNews.style.display === "inline") {
-    showMoreNews.style.display = "none";
-    // showCurrentNews.style.display = "inline";
-    showMoreNewsButton.innerHTML = "Show More";
-               
+  /* ---------- News: show more / less ---------- */
+  var newsBtn = document.getElementById("moreNewsButton");
+  var moreNews = document.getElementById("moreNews");
+  if (newsBtn && moreNews) {
+    newsBtn.addEventListener("click", function () {
+      var open = moreNews.classList.toggle("open");
+      newsBtn.textContent = open ? "Show Less" : "Show More";
+    });
   }
-  else {
-    // Hide the text between the span
-    // elements
-    showMoreNews.style.display = "inline";
- 
-    // Show the dots after the text
-    // showCurrentNews.style.display = "inline";
- 
-    // Change the text on button to
-    // 'Show More'
-    showMoreNewsButton.innerHTML = "Show Less";
-  }
-}
 
-function toggleTextPubs(){
-  let showMorePubs = document.getElementById("morePubs");
-  let showMorePubsButton = document.getElementById("morePubsButton");
-            
-  if (morePubs.style.display === "inline") {
-    showMorePubs.style.display = "none";
-    // showCurrentNews.style.display = "inline";
-    showMorePubsButton.innerHTML = "Show More";
-                
-  }
-  else {
-    // Hide the text between the span
-    // elements
-    showMorePubs.style.display = "inline";
- 
-    // Show the dots after the text
-    // showCurrentNews.style.display = "inline";
- 
-    // Change the text on button to
-    // 'Show More'
-    showMorePubsButton.innerHTML = "Show Less";
-  }
-}
-
-// function toggleTest{
-//   let showMorePubs = document.getElementById("morePubs");
-//   showMorePubs.style.display = "inline";
-// }
-
+  /* ---------- Publication year filter ---------- */
+  var filters = Array.prototype.slice.call(document.querySelectorAll(".pub-filter"));
+  var blocks = Array.prototype.slice.call(document.querySelectorAll(".year-block"));
+  filters.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var year = btn.getAttribute("data-year");
+      filters.forEach(function (b) { b.classList.toggle("active", b === btn); });
+      blocks.forEach(function (blk) {
+        blk.style.display =
+          year === "all" || blk.getAttribute("data-year") === year ? "" : "none";
+      });
+    });
+  });
+})();

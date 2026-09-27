@@ -114,6 +114,7 @@
       </div>
       <div class="card news-card">
         <ul class="news-list" id="currentNews">
+          <li><span class="date">2026/09</span> &mdash; Two conference papers on VideoLLM output repetition and audio-language model safety are accepted to NeurIPS 2026.</li>
           <li><span class="date">2026/02</span> &mdash; One conference paper on backdoor attack is accepted to CVPR 2026.</li>
           <li><span class="date">2025/11</span> &mdash; One journal paper on skeletal adversarial attack is accepted to TIFS.</li>
           <li><span class="date">2025/09</span> &mdash; One conference paper on videoLLM safety is accepted to AAAI 2026.</li>
@@ -204,7 +205,8 @@
           VideoLLMs. A central question is how video recognition 
           systems can be fooled by stylized perturbations (<span class="venue-pill">IEEE S&amp;P 2023, AAAI 2024, TDSC 2026, DLSP 2024</span>), and 
           why VideoLLMs perform relatively weak, e.g., missing harmful content that is plainly visible 
-          to humans (<span class="venue-pill">AAAI 2026</span>).
+          to humans (<span class="venue-pill">AAAI 2026</span>) or being driven into repetitive outputs 
+          under stress testing (<span class="venue-pill">NeurIPS 2026</span>).
         </p>
         <!-- <p class="rep-inline">
           Representative work: <b>Failures to Surface Harmful Contents in Video Large Language Models</b>
@@ -332,7 +334,24 @@
           </div>
         </article>
 
-        <!-- 4. Bones of Contention -->
+        <!-- 4. VideoSTF -->
+        <article class="sw-card card">
+          <div class="sw-figure">
+            <span class="line-tag">VideoLLM safety</span>
+            <div class="venue-big">NeurIPS<span>2026 &middot; CCF-A &middot; CORE: A*</span></div>
+          </div>
+          <div class="sw-body">
+            <h3>VideoSTF: Stress-Testing Output Repetition in Video Large Language Models</h3>
+            <p class="authors"><span class="me">Yuxin Cao</span>, Wei Song, Shangzhi Xu, Jingling Xue, Jin Song Dong</p>
+            <p class="summary">Surfaces output repetition in VideoLLMs, where decoding collapses into self-reinforcing loops, and benchmarks it on 10,000 videos across 10 models, revealing repetition rates up to 91% and temporal stressors that trigger it as a black-box attack with up to 98% success.</p>
+            <div class="pub-links">
+              <a class="lnk" href="https://arxiv.org/abs/2602.10639" target="_blank" rel="noopener">Paper</a>
+              <a class="lnk" href="https://github.com/yuxincao22/VideoSTF_benchmark" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Bones of Contention -->
         <article class="sw-card card">
           <div class="sw-figure">
             <span class="line-tag">Skeleton security</span>
@@ -348,7 +367,7 @@
           </div>
         </article>
 
-        <!-- 5. Flow-Attention Spatio-Temporal Net (FASTEN) -->
+        <!-- 6. Flow-Attention Spatio-Temporal Net (FASTEN) -->
         <article class="sw-card card">
           <div class="sw-figure">
             <span class="line-tag">Face anti-spoofing</span>
@@ -365,7 +384,7 @@
           </div>
         </article>
 
-        <!-- 6. ALMGuard -->
+        <!-- 7. ALMGuard (hidden)
         <article class="sw-card card">
           <div class="sw-figure">
             <span class="line-tag">Audio-LM safety</span>
@@ -381,6 +400,7 @@
             </div>
           </div>
         </article>
+        -->
 
       </div>
     </div>
@@ -407,6 +427,22 @@
       <div class="year-block" data-year="2026">
         <h3 id="_2026">2026</h3>
         <ul class="pub-list">
+          <li class="pub-item">
+            <span class="title">VideoSTF: Stress-Testing Output Repetition in Video Large Language Models</span>
+            <div class="authors"><span class="me">Yuxin Cao</span>, Wei Song, Shangzhi Xu, Jingling Xue, Jin Song Dong</div>
+            <div class="venue-line">Proceedings of the Conference on Neural Information Processing Systems (<b>NeurIPS</b>), 2026.</div>
+            <div class="tags"><span class="tag-ccf">CCF-A</span><span class="tag-core">CORE: A*</span>
+              <span class="pub-links"><a class="lnk" href="https://arxiv.org/abs/2602.10639" target="_blank" rel="noopener">Paper</a>
+                <a class="lnk" href="https://github.com/yuxincao22/VideoSTF_benchmark" target="_blank" rel="noopener">Code</a></span></div>
+          </li>
+
+          <li class="pub-item">
+            <span class="title">CrossSteer: Cross-Modal Safety Steering for Audio-Language Models</span>
+            <div class="authors">Houde Dong, Weifei Jin, <span class="me">Yuxin Cao</span>, Wei Song, Derui Wang, Jie Hao</div>
+            <div class="venue-line">Proceedings of the Conference on Neural Information Processing Systems (<b>NeurIPS</b>), 2026.</div>
+            <div class="tags"><span class="tag-ccf">CCF-A</span><span class="tag-core">CORE: A*</span></div>
+          </li>
+
           <li class="pub-item">
             <span class="title">Towards Stealthy and Effective Backdoor Attacks on Lane Detection: A Naturalistic Data Poisoning Approach</span>
             <div class="authors">Yifan Liao, <span class="me">Yuxin Cao</span>, Yedi Zhang, Wentao He, Yan Xiao, Xianglong Du, Zhiyong Huang, Jin Song Dong</div>
@@ -436,7 +472,7 @@
             <div class="authors">Duoxun Tang*, <span class="me">Yuxin Cao*</span>, Xi Xiao, Derui Wang, Sheng Wen and Tianqing Zhu</div>
             <div class="venue-line">IEEE Transactions on Dependable and Secure Computing (<b>TDSC</b>), 2026.</div>
             <div class="tags"><span class="tag-q">Q1 / top</span><span class="tag-ccf">CCF-A</span><span class="tag-core">CORE: A*</span>
-              <span class="pub-links"><a class="lnk" href="" target="_blank" rel="noopener">Paper</a></span></div>
+              <span class="pub-links"><a class="lnk" href="https://ieeexplore.ieee.org/document/11571000/" target="_blank" rel="noopener">Paper</a></span></div>
           </li>
 
           <li class="pub-item">
@@ -789,7 +825,7 @@
         </div>
       </div>
 
-      <div class="footer-meta">&copy; Yuxin Cao | Last updated: June, 2026.</div>
+      <div class="footer-meta">&copy; Yuxin Cao | Last updated: Sept., 2026.</div>
     </div>
   </footer>
 

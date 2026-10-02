@@ -557,6 +557,7 @@ section { scroll-margin-top: 84px; }
 .sw-body h3 { font-size: 1.05rem; margin: 0 0 6px; line-height: 1.35; }
 .sw-body .authors { font-size: .83rem; color: var(--muted); margin: 0 0 8px; }
 .sw-body .authors .me { color: var(--purple-700); font-weight: 700; }
+.paper-icon { display: inline-block; height: 1.3em; width: auto; vertical-align: -0.28em; margin-right: 6px; }
 .sw-body .summary { font-size: .88rem; color: var(--ink-soft); margin: 0 0 12px; }
 
 /* ---- Paper / code / project link buttons ---- */
